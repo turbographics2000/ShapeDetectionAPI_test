@@ -13,6 +13,17 @@ let barcodeNames = [
     'upcA',
     'upcE'
 ];
+let faceDetector = new FaceDetector();
+let faceImage = new Image();
+faceImage.onload = function() {
+    faceDetector.detect(faceImage).then(result => {
+        for(const res of result) {
+            console.log(res);
+        }
+    }).catch(err => {
+        console.log(err);
+    })
+}
 let barcodeDetector = new BarcodeDetector();
 let barcodeImages;
 Promise.all(barcodeNames.map(name => {
@@ -55,6 +66,5 @@ Promise.all(barcodeNames.map(name => {
     }).catch(val => {
         console.log(val);
     });
-
-})
+});
 
