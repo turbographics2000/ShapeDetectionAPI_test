@@ -24,6 +24,7 @@ Promise.all(barcodeNames.map(name => {
         img.src = name + '.png';
     });
 })).then(barcodeImages => {
+    Promise.all(barcodeImages.map(img => barcodeDetector.detect(img)))
     .then(detectBarcords => {
         detectBarcords.forEach((result, i) => {
             let li = (text, parent) => {
@@ -54,4 +55,3 @@ barcodeDetector.detect(barcodeImages[barcodeNames.indexOf('qrcode')]).then(val =
 }).catch(val => {
     console.log(val);
 });
-Promise.all(barcodeImages.map(img => barcodeDetector.detect(img)))
