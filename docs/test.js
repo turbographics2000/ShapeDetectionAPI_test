@@ -1,6 +1,7 @@
 let faceDetector = new FaceDetector();
 let faceImage = new Image();
 faceImage.onload = function() {
+    document.body.appendChild(faceImage);
     faceDetector.detect(faceImage).then(result => {
         for(const res of result) {
             console.log(res);
