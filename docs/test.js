@@ -1,3 +1,16 @@
+let faceDetector = new FaceDetector();
+let faceImage = new Image();
+faceImage.onload = function() {
+    faceDetector.detect(faceImage).then(result => {
+        for(const res of result) {
+            console.log(res);
+        }
+    }).catch(err => {
+        console.log(err);
+    })
+}
+faceImage.src = 'kao.jpg';
+
 let barcodeNames = [
     '39',
     'codabar',
@@ -13,19 +26,9 @@ let barcodeNames = [
     'upcA',
     'upcE'
 ];
-let faceDetector = new FaceDetector();
-let faceImage = new Image();
-faceImage.onload = function() {
-    faceDetector.detect(faceImage).then(result => {
-        for(const res of result) {
-            console.log(res);
-        }
-    }).catch(err => {
-        console.log(err);
-    })
-}
 let barcodeDetector = new BarcodeDetector();
 let barcodeImages;
+
 Promise.all(barcodeNames.map(name => {
     return new Promise((resolve, reject) => {
         let img = new Image();
