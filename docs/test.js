@@ -23,9 +23,8 @@ Promise.all(barcodeNames.map(name => {
         img.src = name + '.png';
     });
 })).then(barcodeImages => {
-    Promise.all(barcodeImages.map(img => {
-        barcodeDetector.detect(img);
-    })).then(detectBarcords => {
+    Promise.all(barcodeImages.map(img => barcodeDetector.detect(img)))
+    .then(detectBarcords => {
         detectBarcords.forEach((result, i) => {
             let li = (text, parent) => {
                 let elm = document.createElement('li');
