@@ -7,7 +7,8 @@ let barcodeNames = [
     'gtin14',
     'i25',
     'pdf4172',
-    'postnet', 'qrcode',
+    'postnet', 
+    'qrcode',
     'ucc128',
     'upcA',
     'upcE'
@@ -23,6 +24,11 @@ Promise.all(barcodeNames.map(name => {
         img.src = name + '.png';
     });
 })).then(barcodeImages => {
+    barcodeDetector.detect(barcodeImages[barcodeImages.indexOf('qrcode')]).then(val => {
+        console.log(val);
+    }).catch(val => {
+        console.log(val);
+    });
     Promise.all(barcodeImages.map(img => barcodeDetector.detect(img)))
     .then(detectBarcords => {
         detectBarcords.forEach((result, i) => {
