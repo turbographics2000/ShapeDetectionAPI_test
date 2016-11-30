@@ -26,33 +26,35 @@ Promise.all(barcodeNames.map(name => {
 })).then(imgs => {
     barcodeImages = imgs;
     Promise.all(barcodeImages.map(img => barcodeDetector.detect(img)))
-    .then(detectBarcords => {
-        detectBarcords.forEach((result, i) => {
-            let li = (text, parent) => {
-                let elm = document.createElement('li');
-                elm.textContent = text;
-                parent.appendChild(elm);
-            }
-            let resultItem = document.createElement('li');
-            let rawValue = 'rawValue: ' + document.createElement('div');
-            let boundingBox = document.createElement('ul');
-            boundingBox.classList.add('boundingbox');
-            li('x: ' + result.boundingBox.x, boundingBox);
-            li('y: ' + result.boundingBox.y, boundingBox);
-            li('w: ' + result.boundingBox.w, boundingBox);
-            li('h: ' + result.boundingBox.h, boundingBox);
-            resultItem.appendChild(rawValue);
-            resultItem.appendChild(barcodeImages[i]);
-            resultItem.appendChild(boundingBox);
+        .then(detectBarcords => {
+            detectBarcords.forEach((result, i) => {
+                let li = (text, parent) => {
+                    let elm = document.createElement('li');
+                    elm.textContent = text;
+                    parent.appendChild(elm);
+                }
+                let resultItem = document.createElement('li');
+                let rawValue = 'rawValue: ' + document.createElement('div');
+                let boundingBox = document.createElement('ul');
+                boundingBox.classList.add('boundingbox');
+                li('x: ' + result.boundingBox.x, boundingBox);
+                li('y: ' + result.boundingBox.y, boundingBox);
+                li('w: ' + result.boundingBox.w, boundingBox);
+                li('h: ' + result.boundingBox.h, boundingBox);
+                resultItem.appendChild(rawValue);
+                resultItem.appendChild(barcodeImages[i]);
+                resultItem.appendChild(boundingBox);
+            });
+        }).catch(error => {
+            console.log(error);
         });
-    }).catch(error => {
-        console.log(error);
+}).then(_ => {
+    document.body.appendChild(barcodeImages[barcodeNames.indexOf('qrcode')]);
+    barcodeDetector.detect(barcodeImages[barcodeNames.indexOf('qrcode')]).then(val => {
+        console.log(val);
+    }).catch(val => {
+        console.log(val);
     });
-});
 
-document.body.appendChild(barcodeImages[barcodeNames.indexOf('qrcode')]);
-barcodeDetector.detect(barcodeImages[barcodeNames.indexOf('qrcode')]).then(val => {
-    console.log(val);
-}).catch(val => {
-    console.log(val);
-});
+})
+
