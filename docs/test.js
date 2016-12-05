@@ -65,7 +65,7 @@ Promise.all(barcodeNames.map(name => {
             cnv.width = barcodeImages[i].naturalWidth;
             cnv.height = barcodeImages[i].naturalHeight;
             let ctx = cnv.getContext('2d');
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 4;
             ctx.drawImage(barcodeImages[i], 0, 0);
             let trBarcode = document.createElement('tr');
             let tdImg = document.createElement('td');
