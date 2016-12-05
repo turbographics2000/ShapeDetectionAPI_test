@@ -28,6 +28,7 @@ let barcodeNames = [
     'upcE'
 ];
 let barcodeDetector = new BarcodeDetector();
+let barcodeImages;
 
 Promise.all(barcodeNames.map(name => {
     return new Promise((resolve, reject) => {
@@ -38,6 +39,7 @@ Promise.all(barcodeNames.map(name => {
         img.src = name + '.png';
     });
 })).then(imgs => {
+    barcodeImages = imgs;
     Promise.all(imgs.map(img => {
         return barcodeDetector.detect(img);
     })).then(detectBarcords => {
