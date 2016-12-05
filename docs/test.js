@@ -39,7 +39,6 @@ Promise.all(barcodeNames.map(name => {
     });
 })).then(imgs => {
     Promise.all(imgs.map(img => {
-        document.body.appendChild(img);
         return barcodeDetector.detect(img);
     })).then(detectBarcords => {
         detectBarcords.forEach((result, i) => {
@@ -49,7 +48,9 @@ Promise.all(barcodeNames.map(name => {
                 parent.appendChild(elm);
             }
             let resultItem = document.createElement('li');
-            let rawValue = 'rawValue: ' + document.createElement('div');
+            let rawValue = document.createElement('div');
+            rawValue.textContent = 'rawValue: ' + result.rawValue; 
+            resultItem.appendChild(rawValue);
             if(result.boundingBox) {
                 let boundingBox = document.createElement('ul');
                 boundingBox.classList.add('boundingbox');
@@ -57,10 +58,9 @@ Promise.all(barcodeNames.map(name => {
                 li('y: ' + result.boundingBox.y, boundingBox);
                 li('w: ' + result.boundingBox.w, boundingBox);
                 li('h: ' + result.boundingBox.h, boundingBox);
-                resultItem.appendChild(rawValue);
-                resultItem.appendChild(barcodeImages[i]);
                 resultItem.appendChild(boundingBox);
             }
+            resultItem.appendChild(barcodeImages[i]);
         });
     }).catch(error => {
         console.log(error);
