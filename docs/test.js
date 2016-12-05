@@ -45,7 +45,7 @@ let colors = [
     'gray'
 ];
 let barcodeDetector = new BarcodeDetector();
-let barcodeImages;
+let barcodeImages = [];
 
 Promise.all(barcodeNames.map(name => {
     return new Promise((resolve, reject) => {
