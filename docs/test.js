@@ -35,6 +35,7 @@ Promise.all(barcodeNames.map(name => {
         let img = new Image();
         img.onload = function () {
             resolve(img);
+            document.body.appendChild(img);
         }
         img.src = name + '.png';
     });
