@@ -97,7 +97,7 @@ Promise.all(barcodeNames.map(name => {
                 resultTable.appendChild(trResult);
                 ctx.closePath();
             });
-            detectResults.appendChild(resultTable);
+            tdResults.appendChild(resultTable);
         });
     }).catch(error => {
         console.log(error);
