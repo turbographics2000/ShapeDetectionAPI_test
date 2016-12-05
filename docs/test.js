@@ -50,15 +50,17 @@ Promise.all(barcodeNames.map(name => {
             }
             let resultItem = document.createElement('li');
             let rawValue = 'rawValue: ' + document.createElement('div');
-            let boundingBox = document.createElement('ul');
-            boundingBox.classList.add('boundingbox');
-            li('x: ' + result.boundingBox.x, boundingBox);
-            li('y: ' + result.boundingBox.y, boundingBox);
-            li('w: ' + result.boundingBox.w, boundingBox);
-            li('h: ' + result.boundingBox.h, boundingBox);
-            resultItem.appendChild(rawValue);
-            resultItem.appendChild(barcodeImages[i]);
-            resultItem.appendChild(boundingBox);
+            if(result.boundingBox) {
+                let boundingBox = document.createElement('ul');
+                boundingBox.classList.add('boundingbox');
+                li('x: ' + result.boundingBox.x, boundingBox);
+                li('y: ' + result.boundingBox.y, boundingBox);
+                li('w: ' + result.boundingBox.w, boundingBox);
+                li('h: ' + result.boundingBox.h, boundingBox);
+                resultItem.appendChild(rawValue);
+                resultItem.appendChild(barcodeImages[i]);
+                resultItem.appendChild(boundingBox);
+            }
         });
     }).catch(error => {
         console.log(error);
