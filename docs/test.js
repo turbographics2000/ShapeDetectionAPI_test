@@ -86,8 +86,8 @@ Promise.all(barcodeNames.map(name => {
                 itemColor.style.borderColor = colors[i];
                 tdItemColor.appendChild(itemColor);
                 let tdRawValue = document.createElement('td');
-                row.appendChild(tdItemColor);
-                row.appendChild(tdRawValue);
+                trResult.appendChild(tdItemColor);
+                trResult.appendChild(tdRawValue);
                 tdRawValue.textContent = result.rawValue;
                 if (result.boundingBox) {
                     let boundingBox = document.createElement('ul');
