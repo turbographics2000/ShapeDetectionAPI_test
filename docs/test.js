@@ -1,16 +1,16 @@
-let faceDetector = new FaceDetector();
-let faceImage = new Image();
-faceImage.onload = function() {
-    document.body.appendChild(faceImage);
-    faceDetector.detect(faceImage).then(result => {
-        for(const res of result) {
-            console.log(res);
-        }
-    }).catch(err => {
-        console.log(err);
-    })
-}
-faceImage.src = 'kao.jpg';
+// let faceDetector = new FaceDetector();
+// let faceImage = new Image();
+// faceImage.onload = function() {
+//     document.body.appendChild(faceImage);
+//     faceDetector.detect(faceImage).then(result => {
+//         for(const res of result) {
+//             console.log(res);
+//         }
+//     }).catch(err => {
+//         console.log(err);
+//     })
+// }
+// faceImage.src = 'kao.jpg';
 
 let barcodeNames = [
     '39',
