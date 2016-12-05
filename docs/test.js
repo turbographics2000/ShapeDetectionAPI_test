@@ -63,6 +63,7 @@ Promise.all(barcodeNames.map(name => {
                 resultItem.appendChild(boundingBox);
             }
             resultItem.appendChild(barcodeImages[i]);
+            detectResults.appendChild(resultItem);
         });
     }).catch(error => {
         console.log(error);
