@@ -27,6 +27,23 @@ let barcodeNames = [
     'upcA',
     'upcE'
 ];
+let colors = [
+    '#f39700',
+    '#9caeb7',
+    '#00a7db',
+    '#009944',
+    '#d7c447',
+    '#9b7cb6',
+    '#00ada9',
+    '#bb641d',
+    '#e85298',
+    '#6cbb5a',
+    '#b6007a',
+    '#522886',
+    '#019a66',
+    'black',
+    'gray'
+];
 let barcodeDetector = new BarcodeDetector();
 let barcodeImages;
 
@@ -44,28 +61,43 @@ Promise.all(barcodeNames.map(name => {
         return barcodeDetector.detect(img);
     })).then(detectBarcords => {
         detectBarcords.forEach((results, i) => {
-            results.forEach(result => {
-                let li = (text, parent) => {
-                    let elm = document.createElement('li');
-                    elm.textContent = text;
-                    parent.appendChild(elm);
-                }
-                let resultItem = document.createElement('li');
-                let rawValue = document.createElement('div');
-                rawValue.textContent = 'rawValue: ' + result.rawValue;
-                resultItem.appendChild(rawValue);
+            let cnv = document.createElement('canvas');
+            cnv.width = barcodeImages[i].naturalWidth;
+            cnv.height = barcodeImages[i].naturalHeight;
+            let ctx = cnv.getContext('2d');
+            ctx.lineWidth = 2;
+            ctx.drawImage(barcodeImages[i], 0, 0);
+            let trBarcode = document.createElement('tr');
+            let tdImg = document.createElement('td');
+            tdImg.appendChild(cnv);
+            let tdResults = document.createElement('td');
+            trBarcode.appendChild(tdImg);
+            trBarcode.appendChild(tdResults);
+            if (!results.length) tdResults.textContent = 'Detect fail.';
+            barcodeTable.appendChild(trBarcode);
+            let resultTable = document.createElement('table');
+            results.forEach((result, i) => {
+                ctx.beginPath();
+                ctx.strokeStyle = colors[i];
+                let trResult = document.createElement('tr');
+                let tdItemColor = document.createElement('td');
+                let itemColor = document.createElement('div')
+                itemColor.classList.add('item-color');
+                itemColor.style.borderColor = colors[i];
+                tdItemColor.appendChild(itemColor);
+                let tdRawValue = document.createElement('td');
+                row.appendChild(tdItemColor);
+                row.appendChild(tdRawValue);
+                tdRawValue.textContent = result.rawValue;
                 if (result.boundingBox) {
                     let boundingBox = document.createElement('ul');
                     boundingBox.classList.add('boundingbox');
-                    li('x: ' + result.boundingBox.x, boundingBox);
-                    li('y: ' + result.boundingBox.y, boundingBox);
-                    li('w: ' + result.boundingBox.w, boundingBox);
-                    li('h: ' + result.boundingBox.h, boundingBox);
-                    resultItem.appendChild(boundingBox);
+                    ctx.strokeRect(result.boundingBox.x, result.boundingBox.y, result.boundingBox.width, result.boundingBox.height);
                 }
-                resultItem.appendChild(barcodeImages[i]);
+                resultTable.appendChild(trResult);
+                ctx.closePath();
             });
-            detectResults.appendChild(resultItem);
+            detectResults.appendChild(resultTable);
         });
     }).catch(error => {
         console.log(error);
