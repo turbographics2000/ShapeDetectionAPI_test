@@ -63,7 +63,7 @@ Promise.all(barcodeNames.map(name => {
         let ctx = cnv.getContext('2d');
         ctx.drawImage(img, 10, 10);
         barcodeImages.push(cnv);
-        return barcodeDetector.detect(ctx.getImageData(cnv.width, cnv.height));
+        return barcodeDetector.detect(ctx.getImageData(0, 0, cnv.width, cnv.height));
     })).then(detectBarcords => {
         detectBarcords.forEach((results, i) => {
             let cnv = document.createElement('canvas');
