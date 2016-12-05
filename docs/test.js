@@ -61,7 +61,7 @@ Promise.all(barcodeNames.map(name => {
         cnv.width = img.naturalWidth + 20;
         cnv.height = img.naturalHeight + 20;
         let ctx = cnv.getContext('2d');
-        ctx.drawImage(10, 10);
+        ctx.drawImage(img, 10, 10);
         barcodeImages.push(cnv);
         return barcodeDetector.detect(cnv.getImageData(cnv.width, cnv.height));
     })).then(detectBarcords => {
