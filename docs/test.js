@@ -73,7 +73,10 @@ Promise.all(barcodeNames.map(name => {
             let tdResults = document.createElement('td');
             trBarcode.appendChild(tdImg);
             trBarcode.appendChild(tdResults);
-            if (!results.length) tdResults.textContent = 'Detect fail.';
+            if (!results.length) {
+                tdResults.textContent = 'Detect fail.';
+                tdResults.style.color = 'red';
+            }
             barcodeTable.appendChild(trBarcode);
             let resultTable = document.createElement('table');
             results.forEach((result, i) => {
