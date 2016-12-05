@@ -5,3 +5,8 @@ td {
     padding: 4px;
     border: 1px solid gray;
 }
+
+.item-color {
+    border-style: solid;
+    border-width: 2px;
+}
