@@ -56,9 +56,14 @@ Promise.all(barcodeNames.map(name => {
         img.src = name + '.png';
     });
 })).then(imgs => {
-    barcodeImages = imgs;
     Promise.all(imgs.map(img => {
-        return barcodeDetector.detect(img);
+        let cnv = document.createElement('canvas');
+        cnv.width = img.naturalWidth + 20;
+        cnv.height = img.naturalHeight + 20;
+        let ctx = cnv.getContext('2d');
+        ctx.drawImage(10, 10);
+        barcodeImages.push(cnv);
+        return barcodeDetector.detect(cnv.getImageData(cnv.width, cnv.height));
     })).then(detectBarcords => {
         detectBarcords.forEach((results, i) => {
             let cnv = document.createElement('canvas');
