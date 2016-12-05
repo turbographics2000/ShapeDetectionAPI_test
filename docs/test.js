@@ -38,7 +38,7 @@ Promise.all(barcodeNames.map(name => {
         img.src = name + '.png';
     });
 })).then(imgs => {
-    Promise.all(barcodeImages.map(img => {
+    Promise.all(imgs.map(img => {
         document.body.appendChild(img);
         return barcodeDetector.detect(img);
     })).then(detectBarcords => {
