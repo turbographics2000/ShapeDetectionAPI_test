@@ -93,13 +93,15 @@ barcodeDetector && Promise.all(barcodeNames.map(name => {
         let ctxAllBarcode = cnvAllBarcode.getContext('2d');
         imgs.forEach((img, i) => {
             let cellSize = 100;
+            let cellPadding = 5;
+            let previewSize = cellSize -(cellpadding * 2);
             let x = i % w;
             let y = i / w | 0;
-            let ratio = Math.min(cellSize / img.naturalWidth, cellSize / img.naturalHeight);
+            let ratio = Math.min(previewSize / img.naturalWidth, previewSize / img.naturalHeight);
             let previewW = Math.round(img.naturalWidth * ratio);
             let previewH = Math.round(img.naturalHeight * ratio);
-            let posX = Math.round((x * cellSize) + 5 + ((90 - previewW) / 2));
-            let posY = Math.round((y * cellSize) + 5 + ((90 - previewH) / 2));
+            let posX = Math.round((x * cellSize) + 5 + ((previewSize - previewW) / 2));
+            let posY = Math.round((y * cellSize) + 5 + ((previewSize - previewH) / 2));
             console.log(w, h, x, y, previewW, previewH, posX, posY, w, h);
             ctxAllBarcode.drawImage(img, posX, posY, previewW, previewH);
         })
