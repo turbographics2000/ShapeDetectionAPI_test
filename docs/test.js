@@ -95,8 +95,8 @@ barcodeDetector && Promise.all(barcodeNames.map(name => {
             let x = i % w;
             let y = i / w | 0;
             let ratio = Math.min(90 / img.naturalWidth, 90 / img.naturalHeight);
-            let previewW = img.naturalWidth * ratio;
-            let previewH = img.naturalHeight * ratio | 0;
+            let previewW = Math.round(img.naturalWidth * ratio);
+            let previewH = Math.round(img.naturalHeight * ratio);
             let posX = Math.round((x * 100) + 5 + ((90 - previewW) / 2));
             let posY = Math.round((y * 100) + 5 + ((90 - previewH) / 2));
             console.log(w, h, x, y, previewW, previewH, posX, posY, w, h);
