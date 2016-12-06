@@ -7,9 +7,11 @@ table {
     border-collapse: collapse;
 }
 #barcodeTable{
+    table-layout: fixed;
     width: 100%;
 }
 #barcodeTable td {
+
     max-width: 49%;
 }
 td {
