@@ -1,7 +1,7 @@
 let img_url = new Image();
 img_url.onload = _ => {
     let barcodeDetector = new BarcodeDetector();
-    barcodeDetector.detect(img).then(results = {
+    barcodeDetector.detect(img_url).then(results = {
 
     }).catch(e => {
         console.log('img_url error', e);
@@ -18,7 +18,7 @@ img_url.onload = _ => {
     let img_dataURL = new Image();
     img_dataURL.onload = _ => {
         let barcodeDetector = new BarcodeDetector();
-        barcodeDetector.detect(img).then(results = {
+        barcodeDetector.detect(img_dataURL).then(results = {
 
         }).catch(e => {
             console.log('img_dataURL error', e);
@@ -29,7 +29,7 @@ img_url.onload = _ => {
     let img_objectURL = new Image();
     img_objectURL.onload = _ => {
         let barcodeDetector = new BarcodeDetector();
-        barcodeDetector.detect(img).then(results = {
+        barcodeDetector.detect(img_objectURL).then(results = {
 
         }).catch(e => {
             console.log('img_objectURL error', e);
