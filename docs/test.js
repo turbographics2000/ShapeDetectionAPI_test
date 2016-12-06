@@ -51,20 +51,21 @@ Promise.all(barcodeNames.map(name => {
     return new Promise((resolve, reject) => {
         let img = new Image();
         img.onload = function () {
-            let cnv = document.createElement('canvas');
-            cnv.width = img.naturalWidth + 20;
-            cnv.height = img.naturalHeight + 20;
-            cnv.style.width = cnv.width + 'px';
-            cnv.style.height = cnv.height + 'px';
-            let ctx = cnv.getContext('2d');
-            ctx.drawImage(img, 10, 10);
-            cnv.toBlob(blob => {
-                var paddingImg = new Image();
-                paddingImg.onload = _ => {
-                    resolve(paddingImg);
-                };
-                paddingImg.src = URL.createObjectURL(blob);
-            });
+            // let cnv = document.createElement('canvas');
+            // cnv.width = img.naturalWidth + 20;
+            // cnv.height = img.naturalHeight + 20;
+            // cnv.style.width = cnv.width + 'px';
+            // cnv.style.height = cnv.height + 'px';
+            // let ctx = cnv.getContext('2d');
+            // ctx.drawImage(img, 10, 10);
+            // cnv.toBlob(blob => {
+            //     var paddingImg = new Image();
+            //     paddingImg.onload = _ => {
+            //         resolve(paddingImg);
+            //     };
+            //     paddingImg.src = URL.createObjectURL(blob);
+            // });
+            resolve(img);
         }
         img.src = name + '.png';
     });
