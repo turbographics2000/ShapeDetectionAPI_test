@@ -84,7 +84,7 @@ barcodeDetector && Promise.all(barcodeNames.map(name => {
     });
 })).then(imgs => {
     return new Promise((resolve, reject) => {
-        let cellSize = 200;
+        let cellSize = 300;
         let cellPadding = 5;
         let previewSize = cellSize -(cellPadding * 2);
         let cnvAllBarcode = document.createElement('canvas');
@@ -123,7 +123,7 @@ barcodeDetector && Promise.all(barcodeNames.map(name => {
             cnv.width = barcodeImages[i].naturalWidth;
             cnv.height = barcodeImages[i].naturalHeight;
             let ctx = cnv.getContext('2d');
-            ctx.lineWidth = 4;
+            ctx.lineWidth = 8;
             ctx.drawImage(barcodeImages[i], 0, 0);
             let trBarcode = document.createElement('tr');
             let tdImg = document.createElement('td');
