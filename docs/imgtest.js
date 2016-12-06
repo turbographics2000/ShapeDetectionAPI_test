@@ -39,5 +39,5 @@ img_url.onload = _ => {
         img_objectURL.src = URL.createObjectURL(blob);
     });
 };
-img_url.src = 'code.128.png';
+img_url.src = 'code128.png';
 
