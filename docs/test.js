@@ -44,10 +44,15 @@ let colors = [
     'black',
     'gray'
 ];
-let barcodeDetector = new BarcodeDetector();
 let barcodeImages = [];
+let barcodeDetector = null;
+try {
+    barcodeDetector = new BarcodeDetector();
+} catch (e) {
+    warningmsg.style.display = '';
+}
 
-Promise.all(barcodeNames.map(name => {
+barcodeDetector && Promise.all(barcodeNames.map(name => {
     return new Promise((resolve, reject) => {
         let img = new Image();
         img.onload = function () {
