@@ -61,7 +61,7 @@ Promise.all(barcodeNames.map(name => {
             paddingImg.onload = _ => {
                 resolve(paddingImg);
             };
-            img.src = imgURL;
+            paddingImg.src = imgURL;
         }
         img.src = name + '.png';
     });
