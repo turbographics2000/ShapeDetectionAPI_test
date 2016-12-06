@@ -84,7 +84,7 @@ barcodeDetector && Promise.all(barcodeNames.map(name => {
     });
 })).then(imgs => {
     return new Promise((resolve, reject) => {
-        let cellSize = 100;
+        let cellSize = 200;
         let cellPadding = 5;
         let previewSize = cellSize -(cellPadding * 2);
         let cnvAllBarcode = document.createElement('canvas');
