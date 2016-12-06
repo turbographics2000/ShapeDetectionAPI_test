@@ -29,7 +29,6 @@ let barcodeNames = [
 ];
 let colors = [
     '#f39700',
-    '#9caeb7',
     '#00a7db',
     '#009944',
     '#d7c447',
@@ -41,6 +40,7 @@ let colors = [
     '#b6007a',
     '#522886',
     '#019a66',
+    '#9caeb7',
     'black',
     'gray'
 ];
