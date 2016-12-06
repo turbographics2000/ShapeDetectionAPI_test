@@ -13,7 +13,7 @@ img_url.onload = _ => {
     cnv.style.width = cnv.width + 'px';
     cnv.style.height = cnv.height + 'px';
     let ctx = cnv.getContext('2d');
-    ctx.drawImage(img_url);
+    ctx.drawImage(img_url, 0, 0);
 
     let img_dataURL = new Image();
     img_dataURL.onload = _ => {
