@@ -14,13 +14,16 @@ table {
 
     max-width: 49%;
 }
+tr{
+    position: relative;
+}
 td {
     position:relative;
     padding: 4px;
     border: 1px solid gray;
 }
 td img, td canvas {
-    max-width: calc(100% - 10px);
+    max-width: 90%;
 }
 
 .item-color {
