@@ -18,7 +18,7 @@ td {
     border: 1px solid gray;
 }
 td > * {
-    max-width: calc(100% - 10px);
+    /*max-width: calc(100% - 10px);*/
 }
 
 .item-color {
