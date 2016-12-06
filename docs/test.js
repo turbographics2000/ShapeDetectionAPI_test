@@ -44,6 +44,7 @@ let colors = [
     'black',
     'gray'
 ];
+
 let barcodeImages = [];
 let barcodeDetector = null;
 try {
