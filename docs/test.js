@@ -82,7 +82,7 @@ Promise.all(barcodeNames.map(name => {
             let y = i / w | 0;
             let ratio = Math.min(90 / img.naturalWidth, 90 / img.naturalHeight);
             w = img.naturalWidth * ratio;
-            h = img.naturalHeight * ratio;
+            h = img.naturalHeight * ratio | 0;
             ctxAllBarcode.drawImage(img, x * 100 + 5 + (90 - w) / 2, y * 100 + 5 + (90 - h) / 2);
         })
         let allImageURL = cnvAllBarcode.toDataURL();
