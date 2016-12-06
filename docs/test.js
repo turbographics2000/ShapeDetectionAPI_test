@@ -54,6 +54,8 @@ Promise.all(barcodeNames.map(name => {
             let cnv = document.createElement('canvas');
             cnv.width = img.naturalWidth + 20;
             cnv.height = img.naturalHeight + 20;
+            cnv.style.width = cnv.width + 'px';
+            cnv.style.height = cnv.height + 'px';
             let ctx = cnv.getContext('2d');
             ctx.drawImage(img, 10, 10);
             let imgURL = cnv.toDataURL();
