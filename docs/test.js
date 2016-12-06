@@ -67,7 +67,7 @@ Promise.all(barcodeNames.map(name => {
     });
 })).then(imgs => {
     let cnvAllBarcode = document.createElement('canvas');
-    let rout = sqrt(imgs.length);
+    let rout = Math.sqrt(imgs.length);
     let w = rout | 0;
     let h = Math.ceil(rout);
     cnvAllBarcode.width = w * 100;
