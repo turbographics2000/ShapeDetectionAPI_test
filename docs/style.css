@@ -1,5 +1,16 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
 table {
     border-collapse: collapse;
+}
+#barcodeTable{
+    width: 100%;
+}
+#barcodeTable td {
+    max-width: 49%;
 }
 td {
     padding: 4px;
