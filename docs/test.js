@@ -66,24 +66,31 @@ Promise.all(barcodeNames.map(name => {
         img.src = name + '.png';
     });
 })).then(imgs => {
-    let cnvAllBarcode = document.createElement('canvas');
-    let rout = Math.sqrt(imgs.length);
-    let w = rout | 0;
-    let h = Math.ceil(rout);
-    cnvAllBarcode.width = w * 100;
-    cnvAllBarcode.height = h * 100;
-    let ctxAllBarcode = cnvAllBarcode.getContext('2d');
-    imgs.forEach((img, i) => {
-        let x = i % w;
-        let y = i / w | 0;
-        let ratio = Math.min(90 / img.naturalWidth, 90 / img.naturalHeight);
-        w = img.naturalWidth * ratio;
-        h = img.naturalHeight * ratio;
-        ctxAllBarcode.drawImage(img, x * 100 + 5 + (90 - w) / 2, y * 100 + 5 + (90 - h) / 2);
-    })
-    let allImageURL = cnvAllBarcode.toDataURL();
-    imgs.push(allImageURL);
-
+    return new Promise((resolve, reject) => {
+        let cnvAllBarcode = document.createElement('canvas');
+        let rout = Math.sqrt(imgs.length);
+        let w = rout | 0;
+        let h = Math.ceil(rout);
+        cnvAllBarcode.width = w * 100;
+        cnvAllBarcode.height = h * 100;
+        let ctxAllBarcode = cnvAllBarcode.getContext('2d');
+        imgs.forEach((img, i) => {
+            let x = i % w;
+            let y = i / w | 0;
+            let ratio = Math.min(90 / img.naturalWidth, 90 / img.naturalHeight);
+            w = img.naturalWidth * ratio;
+            h = img.naturalHeight * ratio;
+            ctxAllBarcode.drawImage(img, x * 100 + 5 + (90 - w) / 2, y * 100 + 5 + (90 - h) / 2);
+        })
+        let allImageURL = cnvAllBarcode.toDataURL();
+        let imgAll = new Image();
+        imgAll.onload = _ => {
+            imgs.push(imgAll);
+            resolve(imgs);
+        }
+        imgAll.src = allImageURL;
+    });
+}).then(imgs => {
     Promise.all(imgs.map(img => {
         barcodeImages.push(img);
         return barcodeDetector.detect(img);
