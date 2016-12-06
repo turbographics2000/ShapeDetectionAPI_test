@@ -47,10 +47,17 @@ let colors = [
 
 let barcodeImages = [];
 let barcodeDetector = null;
-try {
-    barcodeDetector = new BarcodeDetector();
-} catch (e) {
-    warningmsg.style.display = '';
+let browserVersion = null;
+let check = /Chrome\/([0-9]+)/.exec(navigator.userAgent);
+if (navigator.userAgent.includes('Android') && check) browserVersion = +check[1];
+if (browserVersion && browserVersion >= 57) {
+    try {
+        barcodeDetector = new BarcodeDetector();
+    } catch (e) {
+        warningmsg.style.display = '';
+    }
+} else {
+    platformwarning.style.display = '';
 }
 
 barcodeDetector && Promise.all(barcodeNames.map(name => {
