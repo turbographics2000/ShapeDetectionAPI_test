@@ -59,13 +59,12 @@ Promise.all(barcodeNames.map(name => {
             let ctx = cnv.getContext('2d');
             ctx.drawImage(img, 10, 10);
             cnv.toBlob(blob => {
-                let paddingImg = new Image();
+                var paddingImg = new Image();
                 paddingImg.onload = _ => {
                     resolve(paddingImg);
                 };
                 paddingImg.src = URL.createObjectURL(blob);
-
-            })
+            });
         }
         img.src = name + '.png';
     });
