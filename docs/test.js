@@ -92,6 +92,7 @@ Promise.all(barcodeNames.map(name => {
     });
 }).then(imgs => {
     Promise.all(imgs.map(img => {
+        document.body.appendChild(img);
         barcodeImages.push(img);
         return barcodeDetector.detect(img);
     })).then(detectBarcords => {
