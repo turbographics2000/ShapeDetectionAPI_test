@@ -13,8 +13,12 @@ table {
     max-width: 49%;
 }
 td {
+    position:relative;
     padding: 4px;
     border: 1px solid gray;
+}
+td > * {
+    max-width: calc(100% - 10px);
 }
 
 .item-color {
