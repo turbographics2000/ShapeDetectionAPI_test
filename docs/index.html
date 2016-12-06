@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <title>Shape Detection API test</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="style.css?d=3" rel="stylesheet">
-    </head>
-    <body>
+
+<head>
+    <title>Shape Detection API test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css?d=3" rel="stylesheet">
+</head>
+
+<body>
+    <div id="warningmsg" style="display:none">
         <span>Shape Detection APIは、まだ試験運用での実装となります。</span>
-        <a href="chrome://flags/#enable-experimental-web-platform-features">chrome://flags/#enable-experimental-web-platform-features</a>
-        のフラグを有効に設定してください。(リンクアドレスをコピーして新しいタブを開いてアクセス)
-        <table id="barcodeTable"></table>
-        <script src="test.js?d=30"></script>
-    </body>
+        <a href="chrome://flags/#enable-experimental-web-platform-features">試験運用版のウェブ プラットフォームの機能</a> のフラグを有効にした後リロードしてください。(リンクアドレスをコピーして新しいタブを開いてアクセス)
+    </div>
+    <table id="barcodeTable"></table>
+    <script src="test.js?d=30"></script>
+</body>
+
 </html>"
