@@ -17,8 +17,8 @@ td {
     padding: 4px;
     border: 1px solid gray;
 }
-td > * {
-    /*max-width: calc(100% - 10px);*/
+td img, td canvas {
+    max-width: calc(100% - 10px);
 }
 
 .item-color {
