@@ -101,7 +101,7 @@ barcodeDetector && Promise.all(barcodeNames.map(name => {
             let posX = Math.round((x * cellSize) + 5 + ((90 - previewW) / 2));
             let posY = Math.round((y * cellSize) + 5 + ((90 - previewH) / 2));
             console.log(w, h, x, y, previewW, previewH, posX, posY, w, h);
-            ctxAllBarcode.drawImage(img, posX, posY);
+            ctxAllBarcode.drawImage(img, posX, posY, previewW, previewH);
         })
         let allImageURL = cnvAllBarcode.toDataURL();
         let imgAll = new Image();
