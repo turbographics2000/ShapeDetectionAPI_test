@@ -17,7 +17,7 @@ function gum() {
         }
     }).then(stream => {
         video.onloadedmetadata = _ => {
-            addList(`${video.videoWidth}x${video.videoHeight}`);
+            addList(`max width: ${maxW}: ${video.videoWidth}x${video.videoHeight}`);
             video.srcObject.getTracks().forEach(track => track.stop());
             video.srcObject = null;
             maxW += 20;
