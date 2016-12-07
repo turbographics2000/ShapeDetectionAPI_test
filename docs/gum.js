@@ -17,6 +17,12 @@ navigator.mediaDevices.enumerateDevices(devices => {
 });
 
 function gum(){
+    if(video.srcObject) {
+        let stream = video.srcObject;
+        stream.getTracks().forEach(track => track.stop());
+        stream = null;
+        video.srcObject = null;
+    }
     navigator.mediaDevices.getUserMedia({
         video: {
             deviceId: videoDevices[vIdx].deviceId
