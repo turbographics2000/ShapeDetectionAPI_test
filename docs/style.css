@@ -34,6 +34,14 @@ td img, td canvas {
     height: 16px;
 }
 
+#cameraPreview {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
 #rawValueList {
     position: fixed;
     left: 0;

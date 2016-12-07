@@ -32,7 +32,7 @@ if (navigator.userAgent.includes('Android') && check) browserVersion = +check[1]
 if (browserVersion && browserVersion >= 57) {
     try {
         barcodeDetector = new BarcodeDetector();
-        preview.style.display = '';
+        cameraPreview.style.display = '';
     } catch (e) {
         warningmsg.style.display = '';
     }
@@ -61,7 +61,7 @@ barcodeDetector && navigator.mediaDevices.getUserMedia(constraints).then(stream 
     }
     video.oncanplay = _ => {
         cnv.width = video.videoWidth;
-        cnv.height = preview.videoHeight;
+        cnv.height = cameraPreview.videoHeight;
         ratio = Math.min(cnv.width / video.videoWidth, cnv.height / video.videoHeight);
         drawWidth = video.videoWidth * ratio;
         drawHeight = video.videoHeight * ratio;
@@ -80,7 +80,7 @@ function drawFrame() {
     colorValuePair = {};
     previewCtx.clearRect(0, 0, cnv.width, cnv.height);
     previewCtx.drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
-    preview.toBlob(blob => {
+    cameraPreview.toBlob(blob => {
         blobURL = URL.createObjectURL(blob);
         frameImage.src = blobURL;
     })
