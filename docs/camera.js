@@ -78,6 +78,7 @@ function drawFrame() {
     if (blobURL) URL.revokeObjectURL(blobURL);
     prevSecond = Date.now();
     rawValueList.innerHTML = '';
+    colorValuePair = {};
     previewCtx.clearRect(0, 0, cnv.width, cnv.height);
     previewCtx.drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
     preview.toBlob(blob => {
