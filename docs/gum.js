@@ -28,7 +28,8 @@ function gum(){
     }
     navigator.mediaDevices.getUserMedia({
         video: {
-            deviceId: videoDevices[vIdx].deviceId
+            deviceId: videoDevices[vIdx].deviceId,
+            aspectRatio: window.innerWidth / window.innerHeight
         }
     }).then(stream => {
         video.onloadedmetadata = _ => {
