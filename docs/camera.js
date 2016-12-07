@@ -29,7 +29,7 @@ let colors = [
 
 colorValuePair = {};
 
-previewCtx.lineWidth = 4;
+//previewCtx.lineWidth = 4;
 
 if (navigator.userAgent.includes('Android') && check) browserVersion = +check[1];
 if (browserVersion && browserVersion >= 57) {
@@ -95,18 +95,18 @@ frameImg.onload = _ => {
     rawValueList.innerHTML = '';
     barcodeDetector.detect(video).then(barcodes => {
         barcodes.forEach((barcode, i) => {
-            previewCtx.beginPaht();
-            if (!colorValuePair[barcode.rawValue]) {
-                previewCtx.strokeStyle = colors[i];
-                previewCtx.fillStyle = colors[i];
-                colorValuePair[barcode.rawValue] = colors[i];
-            } else {
-                previewCtx.strokeStyle = colorValuePair[barcode.rawValue];
-                previewCtx.fillStyle = colorValuePair[barcode.rawValue];
-            }
-            let bb = barcode.boundingBox;
-            previewCtx.strokeRect(bb.x + drawLeft, bb.y + drawTop, bb.width, bb.height);
-            previewCtx.closePath();
+            // previewCtx.beginPaht();
+            // if (!colorValuePair[barcode.rawValue]) {
+            //     previewCtx.strokeStyle = colors[i];
+            //     previewCtx.fillStyle = colors[i];
+            //     colorValuePair[barcode.rawValue] = colors[i];
+            // } else {
+            //     previewCtx.strokeStyle = colorValuePair[barcode.rawValue];
+            //     previewCtx.fillStyle = colorValuePair[barcode.rawValue];
+            // }
+            // let bb = barcode.boundingBox;
+            // previewCtx.strokeRect(bb.x + drawLeft, bb.y + drawTop, bb.width, bb.height);
+            // previewCtx.closePath();
 
             let rawValueItem = document.createElement('div');
             rawValueItem.className = 'rawvalue-item';
