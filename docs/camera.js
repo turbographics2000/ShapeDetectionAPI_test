@@ -49,7 +49,7 @@ let constraints = {
 };
 navigator.mediaDevices.enumerateDevices().then(devices => {
     let frontCameras = devices.filter(device => device.kind === 'videoinput' && device.label.includes('facing back'));
-    if (frontCameras.length) constraints.video = { deviceId: frontCameras[0].deviceId };
+    if (frontCameras.length) constraints.video.deviceId = frontCameras[0].deviceId;
 });
 
 barcodeDetector && navigator.mediaDevices.getUserMedia(constraints).then(stream => {
