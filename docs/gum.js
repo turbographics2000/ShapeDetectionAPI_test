@@ -13,6 +13,7 @@ navigator.mediaDevices.enumerateDevices(devices => {
         addList('Video input device nothing.');
     } else {
         vIdx = 0;
+        gum();
     }
 });
 
