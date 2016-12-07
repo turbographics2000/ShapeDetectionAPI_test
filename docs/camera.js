@@ -42,8 +42,8 @@ if (browserVersion && browserVersion >= 57) {
 
 let constraints = {
     video: {
-        width: { min: 720, max: 1280 },
-        height: { min: 720, max: 1280 }
+        // width: { min: 720, max: 1280 },
+        // height: { min: 720, max: 1280 }
     },
     audio: false
 };
