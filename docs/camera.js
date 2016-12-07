@@ -82,13 +82,13 @@ function drawFrame() {
     previewCtx.drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
     cameraPreview.toBlob(blob => {
         blobURL = URL.createObjectURL(blob);
-        frameImage.src = blobURL;
+        frameImg.src = blobURL;
     })
 }
 
-frameImage.onload = _ => {
+frameImg.onload = _ => {
     rawValueList.innerHTML = '';
-    barcodeDetector.detect(frameImage).then(barcodes => {
+    barcodeDetector.detect(frameImg).then(barcodes => {
         barcodes.forEach((barcode, i) => {
             previewCtx.beginPaht();
             if (!colorValuePair[barcode.rawValue]) {
