@@ -37,7 +37,7 @@ td img, td canvas {
 #rawValueList {
     position: fixed;
     left: 0;
-    top: 0;
+    bottom: 0;
 }
 
 .rawValue-item {
