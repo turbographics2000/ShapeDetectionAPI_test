@@ -4,7 +4,7 @@ let barcodeDetector, browserVersion, drawFrameRafId, ratio, drawLeft, drawTop, d
 
 let frameImg = new Image();
 let video = document.createElement('video');
-let previewCtx = preview.getContext('2d');
+let previewCtx = cameraPreview.getContext('2d');
 let check = /Chrome\/([0-9]+)/.exec(navigator.userAgent);
 let colors = [
     '#f39700',
