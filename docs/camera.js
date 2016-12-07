@@ -48,7 +48,7 @@ let constraints = {
     audio: false
 };
 navigator.mediaDevices.enumerateDevices().then(devices => {
-    let backCameras = devices.filter(device => device.kind === 'videoinput' && device.label.includes('facing back'));
+    let backCameras = devices.filter(device => device.kind === 'videoinput' && device.label.includes('facing front'));
     if (backCameras.length) constraints.video.deviceId = backCameras[0].deviceId;
 });
 
