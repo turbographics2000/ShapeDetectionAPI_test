@@ -29,8 +29,8 @@ function gum() {
     navigator.mediaDevices.getUserMedia({
         video: {
             deviceId: videoDevices[vIdx].deviceId,
-            width: { max: 1280 },
-            height: { max: 720 },
+            width: { min: 1280, max: 1280 },
+            height: { min: 720, max: 720 },
             aspectRatio: { ideal: screen.width / screen.height }
         }
     }).then(stream => {
