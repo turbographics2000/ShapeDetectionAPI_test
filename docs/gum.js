@@ -9,7 +9,7 @@ function addList(txt) {
 }
 navigator.mediaDevices.enumerateDevices().then(devices => {
     videoDevices = devices.filter(device => device.kind === 'videoinput');
-    if(!videoDevices.length) {
+    if (!videoDevices.length) {
         addList('Video input device nothing.');
     } else {
         vIdx = 0;
@@ -19,8 +19,8 @@ navigator.mediaDevices.enumerateDevices().then(devices => {
     addList(e.message || e);
 })
 
-function gum(){
-    if(video.srcObject) {
+function gum() {
+    if (video.srcObject) {
         let stream = video.srcObject;
         stream.getTracks().forEach(track => track.stop());
         stream = null;
@@ -29,13 +29,13 @@ function gum(){
     navigator.mediaDevices.getUserMedia({
         video: {
             deviceId: videoDevices[vIdx].deviceId,
-            aspectRatio: window.innerWidth / window.innerHeight
+            aspectRatio: { ideal: screen.width / screen.height }
         }
     }).then(stream => {
         video.onloadedmetadata = _ => {
             addList(`${videoDevices[vIdx].label}: ${video.videoWidth}x${video.videoHeight}`);
             vIdx++;
-            if(vIdx < videoDevices.length) gum();
+            if (vIdx < videoDevices.length) gum();
         }
         video.srcObject = stream;
     })
