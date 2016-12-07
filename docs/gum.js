@@ -15,7 +15,9 @@ navigator.mediaDevices.enumerateDevices().then(devices => {
         vIdx = 0;
         gum();
     }
-});
+}).catch(e => {
+    console.log(e);
+})
 
 function gum(){
     if(video.srcObject) {
