@@ -89,10 +89,6 @@ function drawFrame() {
     //     frameImg.src = blobURL;
     // })
 
-}
-
-frameImg.onload = _ => {
-    rawValueList.innerHTML = '';
     barcodeDetector.detect(video).then(barcodes => {
         barcodes.forEach((barcode, i) => {
             // previewCtx.beginPaht();
@@ -132,5 +128,9 @@ frameImg.onload = _ => {
         prevSecond = nowSeconds;
         requestAnimationFrame(drawFrame);
     });
+}
+
+frameImg.onload = _ => {
+    rawValueList.innerHTML = '';
 }
 
