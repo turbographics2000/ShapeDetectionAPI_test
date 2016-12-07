@@ -16,7 +16,7 @@ navigator.mediaDevices.enumerateDevices().then(devices => {
         gum();
     }
 }).catch(e => {
-    console.log(e);
+    addList(e.message || e);
 })
 
 function gum(){
