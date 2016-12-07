@@ -30,8 +30,7 @@ function gum() {
         video: {
             deviceId: videoDevices[vIdx].deviceId,
             width: 720,
-            height: 1280,
-            aspectRatio: { ideal: screen.width / screen.height }
+            height: 1280
         }
     }).then(stream => {
         video.onloadedmetadata = _ => {
