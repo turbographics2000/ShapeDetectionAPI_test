@@ -34,7 +34,7 @@ td img, td canvas {
     height: 16px;
 }
 
-#cameraPreview {
+.camera-preview {
     position: fixed;
     left: 0;
     top: 0;

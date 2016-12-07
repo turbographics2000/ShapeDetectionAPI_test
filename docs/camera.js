@@ -2,8 +2,11 @@
 
 let barcodeDetector, browserVersion, drawFrameRafId, ratio, drawLeft, drawTop, drawWidth, drawHeight, blobURL, prevSeconds, fpsCnt;
 
-let frameImg = new Image();
 let video = document.createElement('video');
+video.className = 'camera-preview';
+document.body.appendChild(video);
+
+let frameImg = new Image();
 let previewCtx = cameraPreview.getContext('2d');
 let check = /Chrome\/([0-9]+)/.exec(navigator.userAgent);
 let colors = [
@@ -79,17 +82,18 @@ function drawFrame() {
     if (blobURL) URL.revokeObjectURL(blobURL);
     prevSeconds = Date.now();
     colorValuePair = {};
-    previewCtx.clearRect(0, 0, cameraPreview.width, cameraPreview.height);
-    previewCtx.drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
-    cameraPreview.toBlob(blob => {
-        blobURL = URL.createObjectURL(blob);
-        frameImg.src = blobURL;
-    })
+    // previewCtx.clearRect(0, 0, cameraPreview.width, cameraPreview.height);
+    // previewCtx.drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
+    // cameraPreview.toBlob(blob => {
+    //     blobURL = URL.createObjectURL(blob);
+    //     frameImg.src = blobURL;
+    // })
+
 }
 
 frameImg.onload = _ => {
     rawValueList.innerHTML = '';
-    barcodeDetector.detect(frameImg).then(barcodes => {
+    barcodeDetector.detect(video).then(barcodes => {
         barcodes.forEach((barcode, i) => {
             previewCtx.beginPaht();
             if (!colorValuePair[barcode.rawValue]) {
