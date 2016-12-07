@@ -63,13 +63,13 @@ barcodeDetector && navigator.mediaDevices.getUserMedia(constraints).then(stream 
         oldStream;
     }
     video.onloadedmetadata = _ => {
-        cameraPreview.width = video.videoWidth;
-        cameraPreview.height = video.videoHeight;
-        ratio = Math.min(cameraPreview.width / video.videoWidth, cameraPreview.height / video.videoHeight);
-        drawWidth = video.videoWidth * ratio;
-        drawHeight = video.videoHeight * ratio;
-        drawLeft = (cameraPreview.width - drawWidth) / 2 | 0;
-        drawTop = (cameraPreview.height - drawHeight) / 2 | 0;
+        // cameraPreview.width = video.videoWidth;
+        // cameraPreview.height = video.videoHeight;
+        // ratio = Math.min(cameraPreview.width / video.videoWidth, cameraPreview.height / video.videoHeight);
+        // drawWidth = video.videoWidth * ratio;
+        // drawHeight = video.videoHeight * ratio;
+        // drawLeft = (cameraPreview.width - drawWidth) / 2 | 0;
+        // drawTop = (cameraPreview.height - drawHeight) / 2 | 0;
         fpsCnt = 0;
         video.play();
         if (!drawFrameRafId) drawFrame();
