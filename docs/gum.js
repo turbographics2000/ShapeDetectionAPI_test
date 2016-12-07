@@ -7,7 +7,7 @@ function addList(txt) {
     p.textContent = txt;
     document.body.appendChild(p);
 }
-navigator.mediaDevices.enumerateDevices(devices => {
+navigator.mediaDevices.enumerateDevices().then(devices => {
     videoDevices = devices.filter(device => device.kind === 'videoinput');
     if(!videoDevices.length) {
         addList('Video input device nothing.');
