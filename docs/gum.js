@@ -30,7 +30,7 @@ function gum(){
         }
     }).then(stream => {
         video.onloadedmetadata = _ => {
-            addList(`${video[vIdx].label}: ${video.videoWidth}x${video.videoHeight}`);
+            addList(`${videoDevices[vIdx].label}: ${video.videoWidth}x${video.videoHeight}`);
             vIdx++;
             if(vIdx < videoDevices.length) gum();
         }
