@@ -1,0 +1,5 @@
+class PointerEventsExtender{
+    constructor() {
+        HTMLElement
+    }
+}
