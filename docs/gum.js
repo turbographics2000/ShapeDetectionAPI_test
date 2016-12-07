@@ -29,8 +29,8 @@ function gum() {
     navigator.mediaDevices.getUserMedia({
         video: {
             deviceId: videoDevices[vIdx].deviceId,
-            width: {max: 1280},
-            width: {max: 1280}
+            width: {min: 0, max: 1280},
+            width: {min: 0, max: 1280}
         }
     }).then(stream => {
         video.onloadedmetadata = _ => {
