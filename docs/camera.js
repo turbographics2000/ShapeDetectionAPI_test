@@ -77,7 +77,6 @@ function drawFrame() {
     if (drawFrameRafId) cancelAnimationFrame(drawFrameRafId);
     if (blobURL) URL.revokeObjectURL(blobURL);
     prevSecond = Date.now();
-    rawValueList.innerHTML = '';
     colorValuePair = {};
     previewCtx.clearRect(0, 0, cnv.width, cnv.height);
     previewCtx.drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
@@ -88,6 +87,7 @@ function drawFrame() {
 }
 
 frameImage.onload = _ => {
+    rawValueList.innerHTML = '';
     barcodeDetector.detect(frameImage).then(barcodes => {
         barcodes.forEach((barcode, i) => {
             previewCtx.beginPaht();
@@ -120,7 +120,7 @@ frameImage.onload = _ => {
     }).then(_ => {
         fpsCnt++;
         let nowSeconds = Date.now() / 1000 | 0
-        if(prevSeconds !== nowSeconds) {
+        if (prevSeconds !== nowSeconds) {
             fps.textContent = fps;
             fpsCnt = 0;
         }
