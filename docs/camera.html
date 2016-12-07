@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
-    <title>Shape Detection API test</title>
+    <title>Shape Detection API Camera Test</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="style.css?d=3" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="three.min.js"></script>
 </head>
 
 <body>
@@ -19,9 +20,11 @@
         <p>(リンクアドレスをコピーして新しいタブを開いてアクセス)</p>
         <p>のフラグを有効にした後、再度このページにアクセスしてください。</p>
     </div>
-    <a href="./camera.html">camera</a>
-    <table id="barcodeTable"></table>
-    <script src="test.js?d=40"></script>
+    <canvas id="preview" autoplay style="display:none"></video>
+    <div>バーコードまたはQRコードを撮影してください</div>
+    <div id="fps"></div>
+    <script src="camera.js"></script>
+    <div id="detectBounds" style="display:none"></div>
 </body>
 
 </html>

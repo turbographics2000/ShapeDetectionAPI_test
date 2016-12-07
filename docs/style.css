@@ -5,20 +5,20 @@ html, body{
 }
 table {
     border-collapse: collapse;
+    font-size: smaller;
 }
 #barcodeTable{
     table-layout: fixed;
     width: 100%;
 }
 #barcodeTable td {
-
     max-width: 49%;
 }
 tr{
     position: relative;
 }
 td {
-    position:relative;
+    position: relative;
     padding: 4px;
     border: 1px solid gray;
 }
