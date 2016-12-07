@@ -9,8 +9,9 @@ function addList(txt) {
     document.body.appendChild(p);
 }
 
-let maxW = 100;
-function gum() {
+let maxW = 20;
+let maxH = 20;
+function gumMaxW() {
     navigator.mediaDevices.getUserMedia({
         video: {
             width: { min: 0, max: maxW }
@@ -21,9 +22,32 @@ function gum() {
             video.srcObject.getTracks().forEach(track => track.stop());
             video.srcObject = null;
             maxW += 20;
-            if (maxW !== 2000) gum();
+            if (maxW === 2000) {
+                gumMaxH();
+            } else {
+                gumMaxW();
+            }
         }
         video.srcObject = stream;
     });
 }
-gum();
+
+function gumMaxH() {
+    navigator.mediaDevices.getUserMedia({
+        video: {
+            height: { min: 0, max: maxH }
+        }
+    }).then(stream => {
+        video.onloadedmetadata = _ => {
+            addList(`max width = ${maxW}: ${video.videoWidth}x${video.videoHeight}`);
+            video.srcObject.getTracks().forEach(track => track.stop());
+            video.srcObject = null;
+            maxH += 20;
+            if (maxH !== 2000) gumMaxH();
+        }
+        video.srcObject = stream;
+    });
+}
+
+gumMaxW();
+
