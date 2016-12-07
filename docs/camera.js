@@ -60,13 +60,13 @@ barcodeDetector && navigator.mediaDevices.getUserMedia(constraints).then(stream 
         oldStream;
     }
     video.oncanplay = _ => {
-        cnv.width = video.videoWidth;
-        cnv.height = cameraPreview.videoHeight;
-        ratio = Math.min(cnv.width / video.videoWidth, cnv.height / video.videoHeight);
+        cameraPreview.width = video.videoWidth;
+        cameraPreview.height = video.videoHeight;
+        ratio = Math.min(cameraPreview.width / video.videoWidth, cameraPreview.height / video.videoHeight);
         drawWidth = video.videoWidth * ratio;
         drawHeight = video.videoHeight * ratio;
-        drawLeft = (cnv.width - drawWidth) / 2 | 0;
-        drawTop = (cnv.height - drawHeight) / 2 | 0;
+        drawLeft = (cameraPreview.width - drawWidth) / 2 | 0;
+        drawTop = (cameraPreview.height - drawHeight) / 2 | 0;
         fpsCnt = 0;
         if (!drawFrameRafId) drawFrame();
     }
@@ -78,7 +78,7 @@ function drawFrame() {
     if (blobURL) URL.revokeObjectURL(blobURL);
     prevSecond = Date.now();
     colorValuePair = {};
-    previewCtx.clearRect(0, 0, cnv.width, cnv.height);
+    previewCtx.clearRect(0, 0, cameraPreview.width, cameraPreview.height);
     previewCtx.drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
     cameraPreview.toBlob(blob => {
         blobURL = URL.createObjectURL(blob);
