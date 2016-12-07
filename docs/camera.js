@@ -7,7 +7,7 @@ video.className = 'camera-preview';
 document.body.appendChild(video);
 
 let frameImg = new Image();
-let previewCtx = cameraPreview.getContext('2d');
+//let previewCtx = cameraPreview.getContext('2d');
 let check = /Chrome\/([0-9]+)/.exec(navigator.userAgent);
 let colors = [
     '#f39700',
