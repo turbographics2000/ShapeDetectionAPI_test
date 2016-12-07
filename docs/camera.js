@@ -67,6 +67,7 @@ barcodeDetector && navigator.mediaDevices.getUserMedia(constraints).then(stream 
         drawHeight = video.videoHeight * ratio;
         drawLeft = (cnv.width - drawWidth) / 2 | 0;
         drawTop = (cnv.height - drawHeight) / 2 | 0;
+        fpsCnt = 0;
         if (!drawFrameRafId) drawFrame();
     }
     video.srcObject = stream;
@@ -76,7 +77,6 @@ function drawFrame() {
     if (drawFrameRafId) cancelAnimationFrame(drawFrameRafId);
     if (blobURL) URL.revokeObjectURL(blobURL);
     prevSecond = Date.now();
-    fpsCnt = 0;
     rawValueList.innerHTML = '';
     previewCtx.clearRect(0, 0, cnv.width, cnv.height);
     previewCtx.drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
@@ -99,7 +99,7 @@ frameImage.onload = _ => {
                 previewCtx.fillStyle = colorValuePair[barcode.rawValue];
             }
             let bb = barcode.boundingBox;
-            previewCtx.strokeRect(bb.x, bb.y, bb.width, bb.height);
+            previewCtx.strokeRect(bb.x + drawLeft, bb.y + drawTop, bb.width, bb.height);
             previewCtx.closePath();
 
             let rawValueItem = document.createElement('div');
