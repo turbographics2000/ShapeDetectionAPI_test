@@ -59,7 +59,7 @@ barcodeDetector && navigator.mediaDevices.getUserMedia(constraints).then(stream 
         video.srcObject;
         oldStream;
     }
-    video.oncanplay = _ => {
+    video.onloadedmetadata = _ => {
         cameraPreview.width = video.videoWidth;
         cameraPreview.height = video.videoHeight;
         ratio = Math.min(cameraPreview.width / video.videoWidth, cameraPreview.height / video.videoHeight);
@@ -68,6 +68,7 @@ barcodeDetector && navigator.mediaDevices.getUserMedia(constraints).then(stream 
         drawLeft = (cameraPreview.width - drawWidth) / 2 | 0;
         drawTop = (cameraPreview.height - drawHeight) / 2 | 0;
         fpsCnt = 0;
+        video.play();
         if (!drawFrameRafId) drawFrame();
     }
     video.srcObject = stream;
