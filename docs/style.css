@@ -62,6 +62,9 @@ td img, td canvas {
 }
 
 #capmsg {
+    position: fixed;
+    left: 0;
+    top: 0;
     color: white;
     text-shadow: 0px 2px 0px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
