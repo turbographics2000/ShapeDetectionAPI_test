@@ -1,6 +1,6 @@
 /// <reference path="three.min.js" />
 
-let barcodeDetector, browserVersion, drawFrameRafId, ratio, drawLeft, drawTop, drawWidth, drawHeight, blobURL, prevSecond, fpsCnt;
+let barcodeDetector, browserVersion, drawFrameRafId, ratio, drawLeft, drawTop, drawWidth, drawHeight, blobURL, prevSeconds, fpsCnt;
 
 let frameImg = new Image();
 let video = document.createElement('video');
@@ -76,7 +76,7 @@ barcodeDetector && navigator.mediaDevices.getUserMedia(constraints).then(stream 
 function drawFrame() {
     if (drawFrameRafId) cancelAnimationFrame(drawFrameRafId);
     if (blobURL) URL.revokeObjectURL(blobURL);
-    prevSecond = Date.now();
+    prevSeconds = Date.now();
     colorValuePair = {};
     previewCtx.clearRect(0, 0, cameraPreview.width, cameraPreview.height);
     previewCtx.drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
