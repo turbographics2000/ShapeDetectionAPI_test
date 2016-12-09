@@ -31,7 +31,7 @@ colorValuePair = {};
 
 //previewCtx.lineWidth = 4;
 
-if (navigator.userAgent.includes('Android') && check) browserVersion = +check[1];
+if (check) browserVersion = +check[1];
 if (browserVersion && browserVersion >= 57) {
     try {
         barcodeDetector = new BarcodeDetector();
@@ -133,4 +133,3 @@ function drawFrame() {
 frameImg.onload = _ => {
     rawValueList.innerHTML = '';
 }
-
